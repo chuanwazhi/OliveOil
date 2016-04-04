@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+	    <script type="text/javascript">var _speedMark = new Date();</script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=51327862" charset="UTF-8"></script>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<title>支付成功</title>
+		<link rel="stylesheet" type="text/css" href="/css/hzhstyle.css" />
+		<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript" src="/js/shareJs.js"></script>
+		<script src="/js/getArgsFromHref.js" type="text/javascript"	></script>
+		<style>
+		/*改变placeholder样式*/
+		input::-webkit-input-placeholder{color:#a2a2a2;} 
+		input::-moz-placeholder {color:#a2a2a2;} 
+		input:-moz-placeholder {color:#a2a2a2;}
+		input:-ms-placeholder {color:#a2a2a2;}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				 var urlinfo = window.location.href;
+				 var openId = GetArgsFromHref(urlinfo, "openId");
+				 var ssid = GetArgsFromHref(urlinfo, "ssid");
+				 var fromId = GetArgsFromHref(urlinfo, "fromId");
+                 window.sessionStorage.setItem("openId", ''+openId);
+				 window.sessionStorage.setItem("ssid", ''+ssid);
+			     window.sessionStorage.setItem("fromId", ''+fromId); 
+				 
+				$("#btn_jxtb").click(function(){
+				    window.location='loveCard.html?openId='+openId+'&ssid='+ssid+'&fromId='+fromId;
+				});
+				
+			});
+			
+    </script>
+	</head>
+    
+	<body style="background:#eeeeee;">
+		<div id="paySuccess">
+			<div class="main">
+				<div class="top">
+					<img src="/images/suc.png" /><h1>支付成功</h1>
+				</div>
+				<h2>泰康人寿正在为您处理订单<br/>(请稍后以短信通知为准)</h2>
+				<h3 style="margin-top:5px;">详情可致电95522</h3>
+				<h4>或可至泰康人寿官方微信平台-服务-保单服务查询</h4>
+			</div>
+		</div>
+		<!--按钮-->
+		<div id="btn_jxtb" class="btn jxtb" style="margin-top:10px;margin-bottom:10px;" ><h4>继续投保</h4></div>
+	</body>
+</html>

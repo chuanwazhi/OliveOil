@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:context="http://www.springframework.org/schema/context" 
+        xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+ <!-- 而在spring2.5的版本中提供了一种更简便的方式，这样以后要使用属性文件中的资源时，可以使用${属性名}来获得。 
+	<context:property-placeholder location="classpath:config/jdbc.properties"/> -->
+	
+  <!-- 配置dbcp数据源 -->
+	<bean id="dataSource" destroy-method="close"  class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/chuanchuan?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="root"/>
+		<property name="password" value="chuan"/> 
+		<!-- 池启动时创建的连接数量  1.2版本之后才支持这个属性  -->
+        <property name="initialSize" value="5"/>
+        <!-- 同一时间可以从池分配的最多连接数量。设置为0时表示无限制。 -->
+        <property name="maxActive" value="15"/>
+        <!-- 池里不会被释放的最多空闲连接数量。设置为0时表示无限制。 -->
+        <property name="maxIdle" value="5"/>
+        <!-- 在不新建连接的条件下，池中保持空闲的最少连接数。 -->
+        <property name="minIdle" value="3"/>
+        <!-- 设置自动回收超时连接 -->  
+        <property name="removeAbandoned" value="true" />
+        <!-- 自动回收超时时间(以秒数为单位) -->  
+        <property name="removeAbandonedTimeout" value="60"/>
+        <!-- 设置在自动回收超时连接的时候打印连接的超时错误  --> 
+        <property name="logAbandoned" value="true"/>
+        <!-- 等待超时以毫秒为单位，在抛出异常之前，池等待连接被回收的最长时间（当没有可用连接时）。设置为-1表示无限等待。  -->  
+        <property name="maxWait" value="100"/>  
+  </bean>
+  
+<!-- <bean id="TransactionManager"
+  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <property name="dataSource" ref="dataSource" />
+ </bean> -->
+  
+  <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
+ <context:component-scan base-package="com.wechat">
+  <!-- 允许定义过滤器将基包下的某些类纳入或排除
+  <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
+ </context:component-scan>
+  
+<!-- aop注解支持 
+ <aop:aspectj-autoproxy proxy-target-class="true"/> -->
+    <!-- 配置事务  
+<bean id="txManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+    <property name="dataSource" ref="jndiDataSource" />  
+</bean>  --> 
+<!-- 配置基于注解的事物aop 
+<tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>  -->  
+    
+
+<!--===================================================================== -->
+	<!-- MyBATIS 配置文件定义 -->
+	<!--===================================================================== -->
+	<!-- Session工厂 -->  
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />   
+        <!-- mybatis配置文件 -->  
+        <property name="configLocation" value="/WEB-INF/sql-mapping-mybatis.xml" />  
+    </bean>  
+      
+    <!-- 配置SqlSessionTemplate -->    
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">    
+        <constructor-arg  ref="sqlSessionFactory" />    
+    </bean>  
+
+
+</beans>

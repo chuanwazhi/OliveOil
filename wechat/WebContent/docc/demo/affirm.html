@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+	    <script type="text/javascript">var _speedMark = new Date();</script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=51327862" charset="UTF-8"></script>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<title>确认信息</title>
+		<link rel="stylesheet" type="text/css" href="css/hzhstyle.css" />
+		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript"	src="/js/getArgsFromHref.js"></script>
+		<style type="text/css">
+			/*改变placeholder样式*/
+			input::-webkit-input-placeholder{color:#a2a2a2;} 
+			input::-moz-placeholder {color:#a2a2a2;} 
+			input:-moz-placeholder {color:#a2a2a2;}
+			input:-ms-placeholder {color:#a2a2a2;}
+			
+			.affirm_checkbox{font-size:14px; line-height:20px; margin-top:15px;}
+			.affirm_checkbox a:link,.affirm_checkbox a:visited{text-decoration:none; color:; font-size:14px;}
+			.affirm_checkbox a:hover{text-decoration:none; color:; font-size:14px;}
+			.affirm_checkbox a:active{text-decoration:none; color:; font-size:14px;}
+		
+		</style>
+		<script type="text/javascript">
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+				WeixinJSBridge.call('hideOptionMenu');
+			});
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+				WeixinJSBridge.call('hideToolbar');
+			});
+		</script>
+		<script type="text/javascript">
+        $(document).ready(function() {
+			var insureBuyName = window.sessionStorage.getItem("insureBuyName");
+			var insurantBuyName = window.sessionStorage.getItem("insurantBuyName");
+			var insureBeginDate = window.sessionStorage.getItem("insureBeginDate");
+			var insureEndDate = window.sessionStorage.getItem("insureEndDate");
+			var totallFee = window.sessionStorage.getItem("totallFee");
+			var sign = window.sessionStorage.getItem("sign");
+			var temId = window.sessionStorage.getItem("wspTradeNo");
+			
+		    $("#insureBuyName").html(insureBuyName);
+		    $("#insurantBuyName").html(insurantBuyName);
+		    $("#insureBeginDate").html(insureBeginDate);
+		    $("#insureEndDate").html(insureEndDate);
+		    $("#totallFee").html(totallFee);
+		    $("#reqPackage").val(sign);
+		    $("#temId").val(temId);
+		    
+		    if($("#affrimAgree").is(":checked")){
+		    	$("#affrimBtnGray").hide();
+		    	$("#affrimBtn").show();
+		    }else{
+		    	$("#affrimBtnGray").show();
+		    	$("#affrimBtn").hide();
+		    }
+		    
+		    $("#affrimAgree").click(function(){
+		    	if($("#affrimAgree").is(":checked")){
+			    	$("#affrimBtnGray").hide();
+			    	$("#affrimBtn").show();
+			    }else{
+			    	$("#affrimBtnGray").show();
+			    	$("#affrimBtn").hide();
+			    }
+		    });
+		    
+	     });
+    
+	    function getPaySigns(){
+				//var flag = window.sessionStorage.getItem("WeChat");
+				var flag = "SUCCESS";//测试
+				if("SUCCESS"!=flag){
+					$('#m').html("<font>尊敬的用户您好,由于您的微信版本过低,目前无法使用微信支付!</font>");
+	               	$('#m').fadeIn().delay(3000).fadeOut();
+					return ;
+				}
+				form1.submit();
+		}
+    </script>
+	</head>
+    
+	<body style="background:#eeeeee;">
+	<form action="http://wxpt.taikang.com/bizpay/wxpay.html" method="get" name="form1">
+	<input type="hidden" name="showwxpaytitle" value="1">
+	<input type="hidden" id ="temId" name="temId" >
+		<div id="affirm">
+			<div class="content">
+				<div class="main">
+					<div class="tb_name">
+						<h1>投保人姓名</h1>
+						<h2 id="insureBuyName"></h2>
+					</div>
+					<div class="bb_name">
+						<h1>被保人姓名</h1>
+						<h2 id="insurantBuyName"></h2>
+					</div>
+					<div class="bd_sx">
+						<h1>保单生效日</h1>
+						<h2 id="insureBeginDate"></h2>
+					</div>
+					<div class="bd_zz">
+						<h1>保单终止日</h1>
+						<h2 id="insureEndDate"></h2>
+					</div>
+					<div class="cp_name">
+						<h1>产品名称</h1>
+						<h2>天使爱心卡B款</h2>
+					</div>
+					<div class="cp_jg">
+						<h1>产品价格</h1>
+						<h2 id="totallFee" ></h2>
+					</div>
+				</div>
+			</div>
+			<div class="affirm_checkbox">
+				<div class="ins_agree comCheckbox">
+					<span>
+				    	<input type="checkbox" checked="checked" name="affrimAgree" data-role="none" id="affrimAgree">
+				    	<b></b>
+				    </span>    
+				    <label for="affrimAgree">我已阅读</label>
+				    <a href="healthKnow.html">《健康告知》</a>、<a href="activeKnow.html">《投保须知》</a>、<a href="prd_children.html">《泰康e顺少儿重大疾病保险条款》</a>、<a href="prd_medical.html">《泰康附加e顺意外伤害医疗保险条款》</a>
+				</div>
+			</div>
+			<p id="m" align="center"></p>
+			<div class="btn" id="affrimBtnGray" style="margin-top:15px;background:#ccc;color:#333;"><h4>去支付</h4></div>
+			<div class="btn" id="affrimBtn" style="margin-top:15px;display:none;"><h4 onclick="getPaySigns()">去支付</h4></div>
+		</div>
+	</form>
+	</body>
+</html>

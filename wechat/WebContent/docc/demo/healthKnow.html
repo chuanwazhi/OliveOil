@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+	    <script type="text/javascript">var _speedMark = new Date();</script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=51327862" charset="UTF-8"></script>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<title>健康告知</title>
+		<link rel="stylesheet" type="text/css" href="css/hzhstyle.css" />
+		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript"	src="/js/getArgsFromHref.js"></script>
+		<style type="text/css">
+			/*改变placeholder样式*/
+			input::-webkit-input-placeholder{color:#a2a2a2;} 
+			input::-moz-placeholder {color:#a2a2a2;} 
+			input:-moz-placeholder {color:#a2a2a2;}
+			input:-ms-placeholder {color:#a2a2a2;}
+			
+			.affirm_checkbox{font-size:14px; line-height:20px; margin-top:15px;}
+			.affirm_checkbox a:link,.affirm_checkbox a:visited{text-decoration:none; color:; font-size:14px;}
+			.affirm_checkbox a:hover{text-decoration:none; color:; font-size:14px;}
+			.affirm_checkbox a:active{text-decoration:none; color:; font-size:14px;}
+		
+		</style>
+		<script type="text/javascript">
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+				WeixinJSBridge.call('hideOptionMenu');
+			});
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+				WeixinJSBridge.call('hideToolbar');
+			});
+		</script>
+		<script type="text/javascript">
+        $(document).ready(
+			function() {
+			var insureBuyName = window.sessionStorage.getItem("insureBuyName");
+			var insurantBuyName = window.sessionStorage.getItem("insurantBuyName");
+			var insureBeginDate = window.sessionStorage.getItem("insureBeginDate");
+			var insureEndDate = window.sessionStorage.getItem("insureEndDate");
+			var totallFee = window.sessionStorage.getItem("totallFee");
+			
+		    $("#insureBuyName").html(insureBuyName);
+		    $("#insurantBuyName").html(insurantBuyName);
+		    $("#insureBeginDate").html(insureBeginDate);
+		    $("#insureEndDate").html(insureEndDate);
+		    $("#totallFee").html(totallFee);
+		    
+	     });
+    
+	    function getPaySigns(){
+				var flag = window.sessionStorage.getItem("WeChat");
+				if("SUCCESS"!=flag){
+					$('#m').html("<font color='red'>尊敬的用户您好,由于您的微信版本过低,目前无法使用微信支付!</font>");
+					return ;
+				}
+				var sign = window.sessionStorage.getItem("sign");
+				$("#reqPackage").val(sign);
+				form1.submit();
+		}
+    </script>
+	</head>
+    
+	<body class="activeknowbody">
+		<p class="healthTell">健康告知，以下两种情况不保：</p>
+		<ul class="activeknow">
+			<li>1. 存在出生时体重小于2.5公斤（双胞胎或多胞胎除外），或曾有早产、难产、窒息、产伤、新生儿缺血缺氧性脑病等情况。</li>
+	        <li>2. 患有残疾及功能障碍、心血管疾病、神经及精神疾病、恶性肿瘤、糖尿病、肝硬化、肾病、白血病、艾滋病等情况。</li>
+		</ul>
+	</body>
+	
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+</html>

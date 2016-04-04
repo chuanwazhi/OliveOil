@@ -1,0 +1,76 @@
+四、执行INSERT操作后获取记录主键　　　　　　　　　　　　　　　　　　　　　　　　
+
+mapper接口代码：
+
+/**
+ * 添加学生信息
+ * @param student 学生实例
+ * @return 成功操作的记录数目
+ */
+int add(EStudent student);
+至于mapper.xml则分为两种情况了，一种是数据库(如MySQL,SQLServer)支持auto-generated key field，另一种是数据库（如Oracle）不支持auto-generated key field的。
+
+ 1. 数据库(如MySQL,SQLServer)支持auto-generated key field的情况
+
+    手段①（推荐做法）：
+
+<insert id="add" parameterType="EStudent" useGeneratedKeys="true" keyProperty="id">
+  insert into TStudent(name, age) values(#{name}, #{age})
+</insert>
+    手段②：
+
+复制代码
+<insert id="add" parameterType="EStudent">
+  // 下面是SQLServer获取最近一次插入记录的主键值的方式
+  <selectKey resultType="_long" keyProperty="id" order="AFTER">
+    select @@IDENTITY as id
+  </selectKey>
+  insert into TStudent(name, age) values(#{name}, #{age})
+</insert>
+复制代码
+  由于手段②获取主键的方式依赖数据库本身，因此推荐使用手段①。
+
+ 2. 数据库(如Oracle)不支持auto-generated key field的情况
+
+复制代码
+<insert id="add" parameterType="EStudent">
+  <selectKey keyProperty="id" resultType="_long" order="BEFORE">
+    select CAST(RANDOM * 100000 as INTEGER) a FROM SYSTEM.SYSDUMMY1
+  </selectKey>
+  insert into TStudent(id, name, age) values(#{id}, #{name}, #{age})
+</insert
+复制代码
+  注意：mapper接口返回值依然是成功插入的记录数，但不同的是主键值已经赋值到领域模型实体的id中了。
+
+ 
+
+五、 selectKey子元素 详解　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+
+  作用：在insert元素和update元素中插入查询语句。
+
+  其属性如下：
+
+     keyProperty ，默认值unset，用于设置getGeneratedKeys方法或selectKey子元素返回值将赋值到领域模型的哪个属性中
+
+     resultType ，keyPropety所指向的属性类全限定类名或类型别名
+
+     order属性 ，取值范围BEFORE|AFTER，指定是在insert语句前还是后执行selectKey操作
+
+     statementType ，取值范围STATEMENT,PREPARED（默认值）,CALLABLE
+
+注意：selectKey操作会将操作查询结果赋值到insert元素的parameterType的入参实例下对应的属性中。并提供给insert语句使用
+
+ 
+
+六、批量插入　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+
+  方式1：
+
+<insert id="add" parameterType="EStudent">
+  <foreach collection="list" item="item" index="index" separator=";">
+    INSERT INTO TStudent(name,age) VALUES(#{item.name}, #{item.age})
+  </foreach>
+</insert>
+上述方式相当语句逐条INSERT语句执行，将出现如下问题：
+1. mapper接口的add方法返回值将是最一条INSERT语句的操作成功的记录数目（就是0或1），而不是所有INSERT语句的操作成功的总记录数目
+2. 当其中一条不成功时，不会进行整体回滚。

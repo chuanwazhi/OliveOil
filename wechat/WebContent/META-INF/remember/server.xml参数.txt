@@ -1,0 +1,10 @@
+<Context docBase="chuanchuan" path="" reloadable="true" source="org.eclipse.jst.j2ee.server:chuanchuan"/></Host>
+
+docBase：指定应用的路径，相对路径是相对于服务器文件的路径（即工程所在的那个目录），绝对路径就是自己写。
+path：通过域名+path部分访问的就是docBase那一层目录
+指定了访问WEB的时候的入口，即URL是以什么开头，path=""   http://localhost:8080/即可
+docBase="chuanchuan" path=""   就是说http://localhost:8080相当于http://localhost:8080/chuanchuan
+localhost+path==工程路径+docBase
+webContent就是工程的根路径
+
+所有带“/”的地方，都是以docBase为根路径

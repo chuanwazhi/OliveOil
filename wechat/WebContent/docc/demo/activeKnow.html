@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+	<head>
+		<script type="text/javascript">var _speedMark = new Date();</script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=51327862" charset="UTF-8"></script>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<title>投保须知</title>
+		<link rel="stylesheet" type="text/css" href="css/hzhstyle.css" />
+		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript"	src="/js/getArgsFromHref.js"></script>
+		
+		<style type="text/css">
+			/*改变placeholder样式*/
+			input::-webkit-input-placeholder{color:#a2a2a2;} 
+			input::-moz-placeholder {color:#a2a2a2;} 
+			input:-moz-placeholder {color:#a2a2a2;}
+			input:-ms-placeholder {color:#a2a2a2;}
+			
+			.affirm_checkbox{font-size:14px; line-height:20px; margin-top:15px;}
+			.affirm_checkbox a:link,.affirm_checkbox a:visited{text-decoration:none; color:; font-size:14px;}
+			.affirm_checkbox a:hover{text-decoration:none; color:; font-size:14px;}
+			.affirm_checkbox a:active{text-decoration:none; color:; font-size:14px;}
+		
+		</style>
+		<script type="text/javascript">
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+				WeixinJSBridge.call('hideOptionMenu');
+			});
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+				WeixinJSBridge.call('hideToolbar');
+			});
+		</script>
+		<script type="text/javascript">
+        $(document).ready(
+			function() {
+			var insureBuyName = window.sessionStorage.getItem("insureBuyName");
+			var insurantBuyName = window.sessionStorage.getItem("insurantBuyName");
+			var insureBeginDate = window.sessionStorage.getItem("insureBeginDate");
+			var insureEndDate = window.sessionStorage.getItem("insureEndDate");
+			var totallFee = window.sessionStorage.getItem("totallFee");
+			
+		    $("#insureBuyName").html(insureBuyName);
+		    $("#insurantBuyName").html(insurantBuyName);
+		    $("#insureBeginDate").html(insureBeginDate);
+		    $("#insureEndDate").html(insureEndDate);
+		    $("#totallFee").html(totallFee);
+		    
+	     });
+    
+	    function getPaySigns(){
+				var flag = window.sessionStorage.getItem("WeChat");
+				if("SUCCESS"!=flag){
+					$('#m').html("<font color='red'>尊敬的用户您好,由于您的微信版本过低,目前无法使用微信支付!</font>");
+					return ;
+				}
+				var sign = window.sessionStorage.getItem("sign");
+				$("#reqPackage").val(sign);
+				form1.submit();
+		}
+    </script>
+	</head>
+    
+	<body class="activeknowbody">
+		<p class="healthTell">投保须知</p>
+		<ul class="activeknow">
+			<li>1、投保年龄：0岁（满30天）至17周岁（含）。该产品仅限给自己的子女投保</li>
+	        <li>2、投保份数：1-40份</li>
+	        <li>3、天使爱心卡B款售价：9.99元/份</li>
+	        <li>4、撤单及退保：产品无犹豫期并且不可申请撤单。 投保人如选择解除保险合同，公司将退还现金价值且保险合同终止</li>
+	        <li>5、产品条款：本产品适用于《泰康e顺少儿重大疾病保险》条款、《泰康附加e顺意外医疗保险》条款</li>
+	        <li>6、本活动最终解释权给泰康人寿版权所有</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,89 @@
+为什么总是返回带有view？
+因为没有@ResponseBody      //用来保证返回的不是view，如果没有这个，总是会寻找view返回
+
+请求的url和controller中如何对应
+	猜测（貌似错误）：1是绝对路径，2是相对路径，实际都是请求localhost:8080/wechat/docc/publishTask.do
+		dispatch识别的时候应该是去掉工程那一集目录，然后再匹配requestMapping中的/docc/publishTask.do
+		server中配置访问路径：localhost:8080/wechat
+	1、/wechat/docc/publishTask.do   ----》/docc/publishTask.do
+	2、publishTask.do     -------》/docc/publishTask.do
+猜测2（可能正确）：
+1、所有带“/”的地方，都是以docBase为根路径
+2、所有不带“/”的地方，都是相对当前文件的路径
+所以只要保证uri一致即可
+docBase="wechat" path="/" 
+1、/docc/publishTask.do   ----》/docc/publishTask.do
+2、publishTask.do     -------》/docc/publishTask.do
+
+
+如何接收参数：
+jquery
+{insureBuyPhone: "aaa", ppp: "21"}    ResponseBody接收时需要有大括号，因为是以非字符串方式处理
+aa:aaa              @RequestParam("aa")接收时不能有大括号
+jquery在使用$.ajax方式时，data都是作为非字符串的形式解析的。
+1、$.ajax
+var params = {
+			insureBuyPhone:"aaa",ppp:"21"
+	}
+	$.ajax({
+		  url:"/wechat/docc/publishTask.do",
+		  type:"post",
+		  data:JSON.stringify(params),//这个很关键，需要转换成json格式,暂时貌似只支持非字符串类型
+		  //httpbody中：{insureBuyPhone: "aaa", ppp: "21"}
+		  // data:{ aa:"aaa",pp:"sd"},     这个不行，因为实质是aa=aaa&pp=sd，无法识别
+		  contentType:"application/json; charset=utf-8",
+		  dataType:"json",
+		  success: function(){  }
+		})
+后台接收
+	@RequestMapping(method = RequestMethod.POST,value="/docc/publishTask.do")
+	@ResponseBody//用来保证返回的不是view，如果没有这个，总是会寻找view返回
+	public  Map<String,String> publishTask3( @RequestBody ADTO params){
+	
+2、$.post
+var params = {
+			insureBuyPhone:"aaa",ppp:"21"
+	}
+$.ajaxSetup({
+		  contentType: "application/json; charset=utf-8"
+		});//设置请求头类型，很重要，JSON.stringify(params)很关键，本质都是变成json格式，就是字符串。
+		//httpbody中：{insureBuyPhone: "aaa", ppp: "21"}
+	$.post("/wechat/docc/publishTask.do", JSON.stringify(params), function(data){
+		} 
+	}, "json");	
+后台接收
+@RequestMapping(method = RequestMethod.POST,value="/docc/publishTask.do")
+@ResponseBody//用来保证返回的不是view，如果没有这个，总是会寻找view返回
+public  Map<String,String> publishTask3( @RequestBody ADTO params){}
+
+3 $.post
+	var params = {
+			insureBuyPhone:"aaa",ppp:"21"
+	}
+/*$.ajaxSetup({
+		  contentType: "application/json; charset=utf-8"
+		});*/ //不能设置请求头类型，很重要，字符串不需要再转换，本质都是aa:aaa 
+		//httpbody中：aa:aaa  没有大括号,写多个也是可以的(aa:aaa换行pp:ppp)，但是直接用变量就不行，例放params就不行
+	$.post("/wechat/docc/publishTask.do", { aa:"aaa"}, function(data){
+		} 
+	}, "json");	
+后台接收
+@RequestMapping(method = RequestMethod.POST,value="/docc/publishTask.do")
+@ResponseBody//用来保证返回的不是view，如果没有这个，总是会寻找view返回
+public  Map<String,String> publishTask3( @RequestParam("aa")  String aa){}
+	
+	
+4、angularJS  只能用@RequestBody接收，可以是DTO，也可以是MAP   httpbody：{aa: "12333", ppp: "333"}
+$http({
+			method: 'post',
+			url: "/wechat/docc/publishTask.do",
+			dataType:"json",
+            contentType:"application/json",
+            data:{insureBuyPhone:"12333",ppp:"333"}
+		}).success(function(data, status) {
+			$scope.result = data;
+		});
+java:	
+@RequestMapping(method = RequestMethod.POST,value="/docc/publishTask.do")
+	@ResponseBody//用来保证返回的不是view，如果没有这个，总是会寻找view返回
+	public  Map<String,String> publishTask3( @RequestBody ADTO params){

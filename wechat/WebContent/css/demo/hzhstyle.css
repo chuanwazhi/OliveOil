@@ -1,0 +1,668 @@
+*{margin:0;
+ padding:0;
+ list-style:none;}
+body{font-family:Arial, 'Microsoft YaHei', '微软雅黑', san-serif;}
+#messCard{width:100%;
+ 			height:auto;
+ 			overflow:hidden;}
+
+#messCard .message{width:100%;
+					height:auto;
+					background:#fff;
+					margin-top:10px;
+					border-top:1px solid #d3d3d3;
+					border-bottom:1px solid #d3d3d3;}
+#messCard .message .name,#messCard .message .number,#messCard .message .email,#messCard .message .code,#messCard .message .sex,#messCard .message .date{width:96%;
+						 margin-left:4%;
+						 border-bottom:1px solid #f5f5f5;
+						 height:50px;
+						 line-height:50px;}
+#messCard .message .name h1,#messCard .message .number h1,#messCard .message .email h1,#messCard .message .code h1,#messCard .message .sex h1,#messCard .message .date h1{width:25%;
+							height:50px;
+							line-height:50px;
+							text-align:center;
+							float:left;
+							color:#666;
+							font-size:14px;
+							font-weight:normal;
+							text-align:right;}
+#messCard .message .name input,#messCard .message .number input,#messCard .message .email input,#messCard .message .date input{width:73%;
+								float:right;
+								height:50px;
+								line-height:34px;
+								outline:medium;
+								padding:8px 0;
+								font-size:14px;
+								color:#666;
+								padding-left: 10px;							
+								box-sizing: border-box;
+								-moz-box-sizing: border-box;
+								-webkit-box-sizing: border-box;}
+/*身份证件*/
+#messCard .message .card{width:96%;
+						 margin-left:4%;
+						 border-bottom:1px solid #f5f5f5;
+						 height:50px;
+						 line-height:50px;}
+#messCard .message .card .choose{width:25%;
+								float:left;
+								height:50px;
+								line-height:50px;}
+#messCard .message .card input{width:73%;
+								float:right;
+								height:50px;
+								line-height:34px;
+								outline:medium;
+								padding:8px 0; padding-left:10px;
+								font-size:14px;
+								color:#666;
+								box-sizing: border-box;
+								-moz-box-sizing: border-box;
+								-webkit-box-sizing: border-box;}
+/*验证码*/
+#messCard .message .code input{width:37%;
+							height:50px;
+							line-height:34px;
+							float:left;
+							margin-left:2%;
+							padding:8px 0 8px 10px;							
+							box-sizing: border-box;
+							-moz-box-sizing: border-box;
+							-webkit-box-sizing: border-box;
+							font-size:14px;}
+#messCard .message .code h3{width:31%;
+							float:left;
+							height:30px;
+							line-height:30px;
+							margin-top:10px;
+							border-radius:5px;
+							color:#fff;
+							text-align:center;
+							background:#65b249;
+							font-weight:normal;
+							font-size:12px;
+							text-shadow:none;}
+#messCard .messCardtips {
+	height: 37px;
+	line-height: 52px;
+	padding-left: 14%;
+	width: 96%;
+	text-shadow: none;
+	/*background: #f9e5c7;*/
+	color: #65b249;
+	position: relative;
+}
+#messCard .messCardtips::before{
+	content: "";
+	display: block;
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	top:14px;
+	left:5%;
+	background: url('../images/smile.png') no-repeat center center;
+	background-size: 22px 22px;
+
+} 
+#messCard .message .code #countTime {
+	display: none;
+	background: #52c225;
+							height:30px; width:31%;
+							line-height:30px;
+							margin-top:10px;
+							border-radius:5px;
+							color:#fff;
+							text-align:center;
+							font-weight:normal;
+							font-size:12px;
+							text-shadow:none;}
+
+#messCard .message .chooses{width:20%;
+							float:left;
+							margin-left:5%;}
+#messCard .message .chooses img{width:18px;
+								height:18px;
+								display:block;
+								float:left;
+								margin-top:17px;}
+#messCard .message .chooses span{width:50%;
+								  float:left;
+								  margin-left:10px;
+								  color:#424242;}
+#messCard .message .chooses input{width:60%;
+											float:left;
+											margin-left:10px;
+											min-height:22px;
+											resize:none;
+											color:#424242;
+											border-radius:6px;
+											border:1px solid #aaa;
+											line-height:22px;
+											padding-left:5px;
+											outline:medium;
+										display:none;
+									word-wrap : break-word ;}
+
+/*被保险人*/
+#messCard .recognizee{width:100%;
+					height:auto;
+					background:#fff;
+					margin-top:15px;
+					border-top:1px solid #d3d3d3;
+					border-bottom:1px solid #d3d3d3;}
+#messCard .recognizee .rname{width:96%;
+						 margin-left:4%;
+						 border-bottom:1px solid #f5f5f5;
+						 height:50px;
+						 line-height:50px;}
+#messCard .recognizee .rname h1{width:25%;
+							height:50px;
+							line-height:50px;
+							text-align:center;
+							float:left;
+							color:#666;
+							font-size:14px;
+							font-weight:normal;
+							text-align:right;}
+#messCard .recognizee .card .choose h1{width:100%;
+							height:50px;
+							line-height:50px;
+							text-align:center;
+							float:left;
+							color:#666;
+							font-size:14px;
+							font-weight:normal;
+							text-align:right;}
+#messCard .recognizee .rname input{width:73%;
+								float:right;
+								height:50px;
+								line-height:34px;
+								outline:medium;
+								padding:0;
+								font-size:14px;
+								color:#666;
+								padding:8px 0 8px 10px;							
+								box-sizing: border-box;
+								-moz-box-sizing: border-box;
+								-webkit-box-sizing: border-box;}
+/*被保人身份证件*/
+#messCard .recognizee .card{width:96%;
+						 margin-left:4%;
+						 border-bottom:1px solid #f5f5f5;
+						 height:50px;
+						 line-height:50px;}
+#messCard .recognizee .card .choose{width:25%;
+								float:left;
+								height:50px;
+								line-height:50px;}
+#messCard .recognizee .card input{width:73%;
+								float:right;
+								height:50px;
+								line-height:34px;
+								outline:medium;
+								padding:8px 0;padding-left:10px;
+								font-size:14px;
+								color:#666;
+								box-sizing: border-box;
+								-moz-box-sizing: border-box;
+								-webkit-box-sizing: border-box;}
+#messCard .recognizee #rhiddenField .sex{width:96%;
+										 margin-left:4%;
+										 border-bottom:1px solid #f5f5f5;
+										 height:50px;
+										 line-height:50px;}
+#messCard .recognizee #rhiddenField .sex h1{width:25%;
+											height:50px;
+											line-height:50px;
+											text-align:center;
+											float:left;
+											color:#666;
+											font-size:14px;
+											font-weight:normal;
+											text-align:right;}
+#messCard .recognizee #rhiddenField .sex .chooses{width:20%;
+							float:left;
+							margin-left:5%;}
+#messCard .recognizee #rhiddenField .sex .chooses img{width:18px;
+								height:18px;
+								display:block;
+								float:left;
+								margin-top:17px;}
+#messCard .recognizee #rhiddenField .sex .chooses span{width:50%;
+								  float:left;
+								  margin-left:10px;
+								  color:#424242;}
+#messCard .recognizee #rhiddenField .sex .chooses input{width:60%;
+											float:left;
+											margin-left:10px;
+											min-height:22px;
+											resize:none;
+											color:#424242;
+											border-radius:6px;
+											border:1px solid #aaa;
+											line-height:22px;
+											padding-left:5px;
+											outline:medium;
+										display:none;
+									word-wrap : break-word ;}
+#messCard .recognizee #rhiddenField .date{width:96%;
+										 margin-left:4%;
+										 border-bottom:1px solid #f5f5f5;
+										 height:50px;
+										 line-height:50px;}
+#messCard .recognizee #rhiddenField .date h1{width:25%;
+											height:50px;
+											line-height:50px;
+											text-align:center;
+											float:left;
+											color:#666;
+											font-size:14px;
+											font-weight:normal;
+											text-align:right;}
+#messCard .recognizee #rhiddenField .date input{width:73%;
+								float:right;
+								height:50px;
+								line-height:50px;
+								outline:medium;
+								padding:0;
+								font-size:14px;
+								color:#666;
+								padding-left: 10px;							
+								box-sizing: border-box;
+								-moz-box-sizing: border-box;
+								-webkit-box-sizing: border-box;}
+
+#messCard .btn{width:86%;
+			margin-left:7%;
+			height:41px;
+			line-height:41px;
+			text-align:center;
+			color:#fff;
+			border-radius:5px;
+			font-size:20px;
+			background:#65b249;
+			margin-top:30px;
+			text-shadow:none;}
+.jxtb.btn{width:86%; text-shadow:none; 
+			margin-left:7%;
+			height:41px;
+			line-height:41px;
+			text-align:center;
+			color:#fff;
+			border-radius:5px;
+			font-size:20px;
+			background:#65b249;
+			margin-top:30px;
+			text-shadow:none;}
+.jxtb.btn h4{font-weight:normal;font-size:20px;}
+#messCard .btn h4{font-weight:normal;}
+/*确认信息*/
+#affirm{width:100%;
+		height:auto;
+		overflow:hidden;}
+#affirm .content{width:94%;
+				margin-left:3%;
+				height:282px;
+				background:url(../images/bg.png) no-repeat center center;
+				background-size:100%;
+				margin-top:15px;}
+#affirm .content .main{width:92%;
+			           margin-left:4%;
+			           height:200px;
+			           padding-top:20px;}
+#affirm .content .main .tb_name,#affirm .content .main .bb_name,#affirm .content .main .bd_sx,#affirm .content .main .bd_zz,#affirm .content .main .cp_name,#affirm .content .main .cp_jg{width:100%;
+							    height:40px;
+							    line-height:40px;
+							    border-bottom:1px dashed #e5e5e5;}
+#affirm .content .main .tb_name h1,#affirm .content .main .bb_name h1,#affirm .content .main .bd_sx h1,#affirm .content .main .bd_zz h1,#affirm .content .main .cp_name h1,#affirm .content .main .cp_jg h1{width:30%;
+									float:left;
+									height:40px;
+									line-height:40px;
+									text-align:right;
+									border-right:1px solid #e5efe1;
+									font-weight:normal;
+									font-size:14px;
+									color:#66a050;
+									padding-right:10px;}
+#affirm .content .main .tb_name h2,#affirm .content .main .bb_name h2,#affirm .content .main .bd_sx h2,#affirm .content .main .bd_zz h2,#affirm .content .main .cp_name h2,#affirm .content .main .cp_jg h2{width:62%;
+									float:left;
+									height:40px;
+									line-height:40px;
+									text-align:left;
+									font-weight:normal;
+									font-size:14px;
+									color:#66a050;
+									padding-left:10px;}
+#affirm .content .main .bd_sx h2 span,#affirm .content .main .bd_zz h2 span{margin-left:5px;}
+#affirm .content .main div:last-child{border-bottom:none;}
+#affirm .btn{width:86%;
+			margin-left:7%;
+			height:41px;
+			line-height:41px;
+			text-align:center;
+			color:#fff;
+			border-radius:5px;
+			font-size:20px;
+			background:#65b249;
+			margin-top:30px;}
+#affirm .btn h4{font-weight:normal;}
+
+/*支付成功*/
+#paySuccess{width:100%;
+			height:auto;
+			overflow:hidden;}
+#paySuccess .main{width:94%;
+				  margin-left:3%;
+				  overflow:hidden;
+				  background:#fff;
+				  margin-top:15px;}
+#paySuccess .main .top{width:124px;
+						margin:0 auto;
+						height:auto;
+						overflow:hidden;
+						padding-top:15px;}
+#paySuccess .main .top img{width:28px;
+							height:28px;
+							display:block;
+							float:left;}
+#paySuccess .main .top h1{width:90px;
+							line-height:24px;
+							font-weight:normal;
+							font-size:20px;
+							color:#66a050;
+							float:left;
+							margin:3px 0 0 5px;}
+#paySuccess .main h2{width:100%;
+					text-align:center;
+					font-size:18px;
+					color:#66a050;
+					font-weight:normal;
+					margin-top:15px;}
+#paySuccess .main h3,#paySuccess .main h4{width:100%;
+										text-align:center;
+										font-weight:normal;
+										font-size:12px;
+										color:#cdcdcd;
+										line-height:20px;}
+/*支付失败*/
+#payFail{width:100%;
+			height:auto;
+			overflow:hidden;}
+#payFail .main{width:94%;
+				  margin-left:3%;
+				  height:134px;
+				  background:#fff;
+				  margin-top:15px;}
+#payFail .main .top{width:124px;
+						margin:0 auto;
+						height:auto;
+						overflow:hidden;
+						padding-top:15px;}
+#payFail .main .top img{width:28px;
+							height:28px;
+							display:block;
+							float:left;}
+#payFail .main .top h1{width:90px;
+							line-height:24px;
+							font-weight:normal;
+							font-size:20px;
+							color:#eb4141;
+							float:left;
+							margin:3px 0 0 5px;}
+#payFail .main h3,#payFail .main h4{width:100%;
+										text-align:center;
+										font-weight:normal;
+										font-size:12px;
+										color:#cdcdcd;
+										line-height:20px;}
+
+
+
+
+/*保单详情*/
+#particulars{width:100%;
+			height:auto;
+			overflow:hidden;}
+#particulars .name{width:92%;
+					margin-left:4%;
+					height:40px;
+					line-height:40px;
+					font-size:14px;
+					color:#84b075;}
+#particulars .cotainer{width:92%;
+					margin-left:4%;
+					background:url(../images/bg1.png) no-repeat center center;
+					background-size:100%;
+					height:320px;}
+#particulars .cotainer h1{width:92%;
+						margin-left:4%;
+						padding-top:10px;
+						font-weight:bold;
+						font-size:18px;
+						color:#66a050;
+						line-height:36px;}
+#particulars .cotainer .top{width:92%;
+							margin-left:4%;
+							border-bottom:1px solid #f3f8f2;
+							padding-bottom:10px;}
+#particulars .cotainer .top .tbr,#particulars .cotainer .top .bbr,#particulars .cotainer .top .time,#particulars .cotainer .top .sx,#particulars .cotainer .top .zz{width:100%;
+								height:24px;
+								line-height:24px;}
+#particulars .cotainer .top .tbr h2,#particulars .cotainer .top .bbr h2,#particulars .cotainer .top .time h2,#particulars .cotainer .top .sx h2,#particulars .cotainer .top .zz h2{width:30%;
+									float:left;
+									text-align:right;
+									font-weight:normal;
+									font-size:14px;
+									color:#66a050;}
+#particulars .cotainer .top .tbr h3,#particulars .cotainer .top .bbr h3,#particulars .cotainer .top .time h3,#particulars .cotainer .top .sx h3,#particulars .cotainer .top .zz h3{width:60%;
+									float:left;
+									text-align:left;
+									font-weight:normal;
+									font-size:14px;
+									color:#66a050;
+									margin-left:9%;}
+#particulars .cotainer .top .sx h3 span,#particulars .cotainer .top .zz h3 span{margin-left:5px;}
+
+#particulars .cotainer .bottom{width:92%;
+							margin-left:4%;}
+#particulars .cotainer .bottom h2{font-size:18px;
+								color:#66a050;
+								line-height:36px;}
+#particulars .cotainer .bottom div{width:100%;
+									height:24px;
+									line-height:24px;}
+#particulars .cotainer .bottom div img{width:4px;
+										height:4px;
+										margin-top:10px;
+										float:left;
+										display:block;}
+#particulars .cotainer .bottom div h3{font-weight:normal;
+									font-size:14px;
+									color:#66a050;
+									width:200px;
+									float:left;
+									margin-left:5px;}
+
+
+
+/*首页*/
+#loveCard{width:100%;
+		height:auto;
+		overflow:hidden;}
+#loveCard .banner{width:100%;
+					height:auto;}
+#loveCard .banner img{width:100%;
+						display:block;}
+
+#loveCard .name_t{width:80%;
+					height:auto;
+					margin-left:10%;
+					margin-top:10px;}
+#loveCard .name_t h1{width:100%;
+					height:30px;
+					line-height:30px;
+					font-size:14px;
+					color:#7d7d7d;}
+#loveCard .name_t h1 span{font-weight:normal;}
+#loveCard .num{width:80%;
+				margin-left:10%;
+				height:auto;
+				background:#f7f7f7;
+				border:1px solid #cccccc;
+				border-radius:5px;
+				margin-top:10px;
+				margin-bottom:15px;}
+#loveCard .num .fs{width:100%;
+					height:auto;
+					border-bottom:1px solid #cccccc;
+					overflow: hidden;
+					}
+#loveCard .num .fs h1{width:30%;
+					float:left;'
+					height:40px;
+					line-height:40px;
+					font-weight:normal;
+					font-size:15px;
+					color:#7b7b7b;
+					padding-left:5%;}
+#loveCard .num .p1_title{clear: both; font-size: 12px; padding-left:5%; margin-bottom: 5px; color: #567600;}
+#loveCard .num .fs .count{width:40%;
+						  height:40px;
+						  float:right;}
+#loveCard .num .fs .count h2{width:27%;
+							float:left;
+							height:40px;}
+#loveCard .num .fs .count h2 img{width:14px;
+								height:3px;
+								display:block;
+								margin:0 auto;
+								margin-top:18px;}
+#loveCard .num .fs .count h3{width:27%;
+							float:right;
+							height:40px;}
+#loveCard .num .fs .count h3 img{width:14px;
+								height:14px;
+								display:block;
+								margin:0 auto;
+								margin-top:13px;}
+
+#loveCard .num .fs .count input#figure{width:46%;
+								height:40px;
+								float:left;
+								line-height:40px;
+								color:#777777;
+								font-size:16px;
+								text-align:center;
+								font-weight:bold;
+								background:none;
+								border:none;
+								outline:medium;}
+#loveCard .num .je{width:100%;
+					height:40px;
+					clear:both;}
+#loveCard .num .je h1{width:30%;
+					float:left;'
+					height:40px;
+					line-height:40px;
+					font-weight:normal;
+					font-size:15px;
+					color:#7b7b7b;
+					padding-left:5%;}
+#loveCard .num .je h4{width:40%;
+					  height:40px;
+					  float:right;
+					  text-align:right;
+					  margin-right:5%;
+					  line-height:40px;
+					  font-size:16px;
+					  color:#777777;}
+#loveCard .num .je h4 span{margin-right:5px;
+							font-size:18px;}
+
+
+#loveCard .j_ljtbbtn{width:80%; margin:0 0 14px 10%; background:#ff6a19; color:#fff; text-align:center; 
+	height:42px; line-height:42px; border-radius:5px; font-size:20px;}
+#loveCard .j_ul{width:80%; margin:0 0 0px 10%;}
+#loveCard .j_ul ul{width:100%;}
+#loveCard .j_ul li{font-size:13px; color:#797979; height:30px; line-height:30px; position:relative; width:100%;}
+#loveCard .j_ul li:after{width:14px; height:7px; display:inline-block; content:"";
+	background:url(../images/sy_li_iconright.png) no-repeat;
+	background-size:100% 100%; -moz-background-size:100% 100%; -webkit-background-size:100% 100%; 
+	position:absolute;right:10px;top:10px;}
+#loveCard .j_ul li img{width:18px; vertical-align:middle; margin:-2px 5px 0 0 ;}
+
+#loveCard .loveCardRule{}
+#loveCard .loveCtitle{width:80%; margin:0 0 0px 10%;font-size:13px; color:#797979; height:30px; 
+	line-height:30px; position:relative;}
+#loveCard .loveCtitle:after{width:14px; height:7px; display:inline-block; content:"";
+	background:url(../images/sy_li_iconright.png) no-repeat;
+	background-size:100% 100%; -moz-background-size:100% 100%; -webkit-background-size:100% 100%; 
+	position:absolute;left:90px;top:12px;}
+#loveCard .loveCtitle img{width:18px; vertical-align:middle; margin:-2px 5px 0 0 ;}
+#loveCard .loveCconWrap{width:100%; background:#ffffff; margin-top:8px;}
+#loveCard .loveCcon{width:80%; margin:0 0 14px 10%;}
+#loveCard .loveCcon h3{color:#797979; font-size:14px; font-weight:bold; height:40px; line-height:40px; width:100%; position:relative;}
+#loveCard .loveCcon h3:after{width:9px; height:10px; display:inline-block; content:"";
+	background:url(../images/sy_li_icontop.png) no-repeat;
+	background-size:100% 100%; -moz-background-size:100% 100%; -webkit-background-size:100% 100%; 
+	position:absolute;left:70px;top:15px;}
+#loveCard .loveCcon .con{margin-bottom:30px;}
+#loveCard .loveCcon .con ul li{color:#797979; font-size:13px; line-height:20px;}
+#loveCard .loveCconWrap .copy,#loveCard .copys{font-size:13px; color:#797979; text-align:center; padding-bottom:10px;padding-top:10px; position:absolute; bottom:0; width:100%; left:0;}
+#loveCard .loveCconWrap .copy,#loveCard .copys{line-height:20px;}
+
+.affirm_checkbox{width:94%; margin-left:3%;}
+
+/*********************************************** 复选框 ********************************/
+.affirm_checkbox .comCheckbox input[type="checkbox"]{ height:18px; width: 18px; opacity:0; position: absolute; vertical-align:middle;}
+.affirm_checkbox .comCheckbox input[type="checkbox"]:checked + b{height: 18px; width: 18px; display:inline-block; }
+.affirm_checkbox .comCheckbox input[type="checkbox"] + b{
+	height:18px; width:18px; background:url(../images/checkbox.png) no-repeat 0 -18px; display:inline-block; 
+	background-size:17px auto; -webkit-background-size:17px auto; -moz-background-size:17px auto; vertical-align:top;
+}
+.affirm_checkbox .comCheckbox input[type="checkbox"]:checked + b{
+	height:18px; width:18px; background:url(../images/checkbox.png) no-repeat 0 0px; display:inline-block;
+	background-size:17px auto; -webkit-background-size:17px auto; -moz-background-size:17px auto; vertical-align:top;
+}
+/**/
+.activeknowbody{padding:10px 3%; background:#e5e5e5;}
+.activeknow{text-shadow:none; width:100%; padding:10px 0; background:#fff;overflow:hidden;}
+.activeknow li{line-height:22px; padding:3px 10px; font-size:14px; color:#333;}
+/**/
+.healthTell{padding-bottom:10px; color:#65b249; font-size:16px; padding-left:10px;}
+
+/* 信息提示框 */
+.prompt {
+	width: 90%;
+	padding:12px 0;
+	position: absolute;
+	left:50%;
+	margin-left: -45%;
+	background: rgba(0,0,0,.8);
+	border-radius: 3px;
+	color:#fff;
+	font-size: 16px;
+	text-align: center;
+	display: none;
+	font-family:Arial, 'Microsoft YaHei', '微软雅黑', san-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript">var _speedMark = new Date();</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=51327862" charset="UTF-8"></script>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="format-detection" content="telphone=no, email=no" />
+<!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>保单详情</title>
+<link rel="stylesheet" type="text/css" href="/css/hzhstyle.css" />
+<script type="text/javascript"  src="/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript"	src="/js/getArgsFromHref.js"></script>
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				var urlinfo = window.location.href;
+				var Code = GetArgsFromHref(urlinfo, "Code");
+
+				var Message = GetArgsFromHref(urlinfo, "Message");
+				var PolicyNo = GetArgsFromHref(urlinfo, "PolicyNo");
+				var InsureName = decodeURI(GetArgsFromHref(urlinfo,
+						"InsureName"));
+				var InsurantName = decodeURI(GetArgsFromHref(urlinfo,
+						"InsurantName"));
+				var InsureBegindt = decodeURI(GetArgsFromHref(urlinfo,
+						"InsureBegindt"));
+
+				var InsureEnddt = decodeURI(GetArgsFromHref(urlinfo,
+						"InsureEnddt"));
+						
+				var zjbe = decodeURI(GetArgsFromHref(urlinfo,
+						"zjbe"));
+				var ywbe = decodeURI(GetArgsFromHref(urlinfo,
+						"ywbe"));
+
+				if (Code != "SUCCESS") {
+					$("#m").html("未查到订单信息");
+				} else {
+					$("#PolicyNo").html(PolicyNo);
+					$("#InsureName").html(InsureName);
+					$("#InsurantName").html(InsurantName);
+					$("#InsureBegindt").html(InsureBegindt);
+					$("#InsureEnddt").html(InsureEnddt);
+					$("#zjbe").html(zjbe);
+					$("#ywbe").html(ywbe);
+				}
+
+			});
+</script>
+<script type="text/javascript">
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		WeixinJSBridge.call('hideOptionMenu');
+	});
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		WeixinJSBridge.call('hideToolbar');
+	});
+</script>
+</head>
+
+<body style="background:#eeeeee;">
+	<div id="particulars">
+		<div class="name">
+			险种名称:<span>天使爱心卡B款</sapn>
+		</div>
+		<div class="cotainer">
+			<h1>
+				保单号:<span id="PolicyNo"></span>
+			</h1>
+			<div class="top">
+				<div class="tbr">
+					<h2>投保人:</h2>
+					<h3 id="InsureName"></h3>
+				</div>
+				<div class="bbr">
+					<h2>被保人:</h2>
+					<h3 id="InsurantName"></h3>
+				</div>
+				<div class="time">
+					<h2>保障时间:</h2>
+					<h3>一年</h3>
+				</div>
+				<div class="sx">
+					<h2>保障生效日:</h2>
+					<h3 id="InsureBegindt"></h3>
+				</div>
+				<div class="zz">
+					<h2>保障终止日:</h2>
+					<h3 id="InsureEnddt"></h3>
+				</div>
+			</div>
+			
+			<div class="bottom">
+				<h2>保障责任</h2>
+				<div>
+					<img src="/images/icon.png" />
+					<h3>重大疾病保额<span id="zjbe">5000</span></h3>
+				</div>
+				<div>
+					<img src="/images/icon.png" />
+					<h3>意外伤害医疗保额<span id="ywbe">5000</span></h3>
+				</div>
+			</div>
+		</div>
+		
+		<p id="m" align="center">
+			<!-- 显示错误信息 -->
+		</p>
+		
+		
+	</div>
+</body>
+</html>

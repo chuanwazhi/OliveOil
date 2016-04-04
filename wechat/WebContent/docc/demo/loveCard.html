@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+	    <script type="text/javascript">var _speedMark = new Date();</script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=51327862" charset="UTF-8"></script>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<title>天使爱心卡B款</title>
+		<link rel="stylesheet" type="text/css" href="/css/hzhstyle.css" />
+		<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript" src="/js/shareJs.js"></script>
+		<script type="text/javascript" src="/js/insure.js"></script>
+		<script src="/js/userinfo.js" type="text/javascript"></script>
+		<script src="/js/getArgsFromHref.js" type="text/javascript"	></script>
+	    <script type="text/javascript">
+			$(document).ready(function() {
+					var urlinfo = window.location.href;
+					var openId = GetArgsFromHref(urlinfo, "openid");
+					var ssid = GetArgsFromHref(urlinfo, "ssid");
+					var fromId = GetArgsFromHref(urlinfo, "fromId");
+	                window.sessionStorage.setItem("openId", ''+openId);
+					window.sessionStorage.setItem("ssid", ''+ssid);
+				    window.sessionStorage.setItem("fromId", ''+fromId); 
+				    
+			 });
+	    </script>
+	    <style type="text/css">
+	    	input#figure::-webkit-inner-spin-button {
+				 -webkit-appearance: none;
+			}
+	    </style>
+	</head>
+
+	<body style="background:#ffffff;">
+		<div id="loveCard">
+			<!--banner-->
+			<div class="banner"><img src="/images/banner_bg.png" /></div>
+			<div class="name_t">
+				<h1>承保年龄：<span>出生30天且出院-17周岁少儿</span></h1>
+				<h1>保险期间：<span>1年</span></h1>
+			</div>
+			<!--投保份数-->
+			<div class="num">
+				<div class="fs">
+					<h1>投保份数</h1>
+					<div class="count">
+						<h2 id="del"><img src="/images/del.png" /></h2>
+						<input id="figure" type="number"   maxlength="6"  placeholder="" value="1"/>
+						<h3 id="add"><img src="/images/add.png" /></h3>
+					</div>
+					<!-- <p class="p1_title">1名被保人，最多可投保40份</p> -->
+				</div>
+				<div class="je">
+					<h1>支付金额</h1>
+					<h4><span>99.99</span>元</h4>
+				</div>
+			</div>
+			<!---->
+			<div class="j_ljtbbtn" onclick="window.location='messCard.html'" href="javascript:;">立即投保</div>
+            <div class="j_ul">
+                <ul>
+                    <li id="loveCardLi1"><i><img src="/images/sy_li_icon.png"/></i>泰康e顺少儿重大疾病保险<span id="span1">5000</span>元</li>
+                    <li id="loveCardLi2"><i><img src="/images/sy_li_icon.png"/></i>泰康附加e顺意外医疗保险<span id="span2">1000</span>元</li>
+                </ul>
+            </div>
+            <div id="loveCardRule" class="loveCardRule">
+                <div class="loveCtitle">
+                	<i><img src="/images/sy_li_icon2.png"/></i>活动规则
+		        </div>
+                <div class="loveCconWrap" style="display:none;">
+                    <div class="loveCcon">
+                        <h3>活动规则</h3>
+                        <div class="con">
+                        	<ul>
+                            	<li>1、投保年龄：0岁（满30天）至17周岁（含）。该产品仅限给自己的子女投保</li>
+                                <li>2、投保份数：1-40份</li>
+                                <li>3、天使爱心卡B款售价：9.99元/份</li>
+                                <li>4、撤单及退保：产品无犹豫期并且不可申请撤单。 投保人如选择解除保险合同，公司将退还现金价值且保险合同终止</li>
+                                <li>5、产品条款：本产品适用于《泰康e顺少儿重大疾病保险》条款、《泰康附加e顺意外医疗保险》条款</li>
+                                <li>6、本活动最终解释权给泰康人寿版权所有</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copy">
+		            	<p>泰康人寿  版权所有</p>
+		                <p>Copyright Taikanglife.All Rights Reserved</p>
+		            </div>
+                </div>
+            </div>
+            <div class="copys">
+            	<p>泰康人寿  版权所有</p>
+                <p>Copyright Taikanglife.All Rights Reserved</p>
+            </div>
+		</div>
+	</body>
+</html>

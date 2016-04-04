@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>wechat</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	 <servlet>
+    <servlet-name>springMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> 
+     <!-- 可以自定义servlet.xml配置文件的位置和名称，默认为WEB-INF目录下，名称为[<servlet-name>]-servlet.xml，如spring-servlet.xml --> 
+ <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/springMVC-servlet.xml</param-value>  
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+</servlet> 
+<servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <url-pattern>*.do</url-pattern>
+    <!--  访问的请求不能以/打头，如果要以/打头，一定要用/工程名/*,如果没有/打头，则是相对于发送请求的文件所在目录的路径
+    		uri则会自动去掉工程名那一级
+    		eg. /工程名/abc.do     对应的uri=/abc.do
+    		/abc.do              找不到页面，因为是相对于服务器的路径
+    		abc.do（在docc目录下的文件中发的请求）    uri=/docc/abc.do -->
+      
+</servlet-mapping>
+	
+<!-- Spring配置
+====================================== -->
+<listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+   
+<!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下  -->
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/applicationContext.xml</param-value>
+</context-param>	
+	
+</web-app>

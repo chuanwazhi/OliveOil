@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+ <!-- 启用spring mvc 注解 -->
+    <context:annotation-config />
+ 
+    <!-- 设置使用注解的类所在的jar包 -->
+    <context:component-scan base-package="com.wechat"></context:component-scan>
+ 
+    <!-- 完成请求和注解POJO的映射 适配@responseBody返回json格式，同时进行字符编码 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+    	<property name="messageConverters">
+    		<list>
+    			<ref bean="jsonHttpMessageConverter" /> 
+    			<ref bean="stringHttpMessageConverter" /> 
+	    	</list>
+	    </property>
+	 </bean>
+ 	<bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+ 		<property name="supportedMediaTypes">
+			<list>
+				<!--返回字符串格式json-->
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+ 		<property name="supportedMediaTypes">
+ 			<list>
+ 				<value>text/plain;charset=UTF-8</value>
+ 				<!--  text/html是以html的形式输出，比如<input type="text"/>就会在页面上显示一个文本框，而以plain形式就会在页面上原样显示这段代码  -->
+ 			</list>
+        </property>
+    </bean>
+    <!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
+<!--     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/docc/" p:suffix=".html" />
+ --></beans>
