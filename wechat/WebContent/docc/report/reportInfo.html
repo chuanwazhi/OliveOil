@@ -1,0 +1,59 @@
+<!doctype html>
+<html >
+    <head>
+    	<meta http-equiv="content-type" content="text/html; charset=UTF-8" >
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" /> -->
+<!-- 		<meta content="telephone=no" name="format-detection" />
+ -->		<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<title>填写报案信息</title>
+		<link rel="stylesheet" type="text/css" href="/css/demo/hzhstyle.css" />
+		<script type="text/javascript" src="/js/ext/jweixin-1.0.0.js"></script>
+		<script type="text/javascript" src="/js/ext/shareJs.js"></script>
+		<script type="text/javascript" src="/js/ext/angular.js"></script> 
+		<script type="text/javascript" src="/js/ext/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="/js/report/reportInfo.js"></script>
+	    <style type="text/css">
+	    	input#figure::-webkit-inner-spin-button {
+				 -webkit-appearance: none;
+			}
+	    </style>
+	</head>
+	<body style="background:#ffffff;">
+		<div id="loveCard" ng-app="report" ng-controller="reportController">
+			<!--banner-->
+			<div class="banner"><img src="/images/banner_bg.png" /></div>
+			<div class="name_t">
+				<h3>车牌号：<input type="text" ng-model="userDTO.name" /></h3>
+				<h3>联系电话：<input type="text" ng-model="userDTO.mobile" /></h3>
+			</div>
+			<div class="num">
+					<h3>代购物品名称：<input type="text" ng-model="productDTO.name" /></h3>
+					<h3>备注：<input type="text" ng-model="productDTO.remark" /></h3>
+			</div>
+			<div class="num">
+				<button ng-click="saveProductInfo()">   提   交  </button>
+			</div> 
+            <div id="loveCardRule" class="loveCardRule">
+                <div class="loveCconWrap" >
+                    <div class="loveCcon">
+                        <h3>活动规则</h3>
+                        <div class="con">
+                        	<ul>
+                            	<li>1、投保年龄：0岁（满30天）至17周岁（含）。该产品仅限给自己的子女投保</li>
+                                <li>2、投保份数：1-40份</li>
+                                <li>3、天使爱心卡B款售价：9.99元/份</li>
+                                <li>4、撤单及退保：产品无犹豫期并且不可申请撤单。 投保人如选择解除保险合同，公司将退还现金价值且保险合同终止</li>
+                                <li>5、产品条款：本产品适用于《泰康e顺少儿重大疾病保险》条款、《泰康附加e顺意外医疗保险》条款</li>
+                                <li>6、本活动最终解释权给泰康人寿版权所有</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copy">
+		            	<p>平底锅</p>
+		                <p>Copyright Taikanglife.All Rights Reserved</p>
+		            </div>
+                </div>
+            </div>
+		</div>
+	</body>
+</html>

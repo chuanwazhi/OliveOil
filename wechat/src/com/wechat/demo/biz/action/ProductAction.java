@@ -12,7 +12,7 @@ import com.wechat.demo.dto.ProductInfoFormDTO;
 
 @Controller
 public class ProductAction {
-	@RequestMapping(method = RequestMethod.POST,value="/docc/demo/saveProductInfo.do")
+	@RequestMapping(value="/docc/demo/saveProductInfo.do")
 	@ResponseBody//用来保证返回的不是view，如果没有这个，总是会寻找view返回
 	public void saveProductInfo(@RequestBody ProductInfoFormDTO formDTO){
 		System.out.println("productDTO.name = "+formDTO.getProductDTO().getName());

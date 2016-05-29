@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="weChat">
+<html >
     <head>
     	<meta http-equiv="content-type" content="text/html; charset=UTF-8" >
 		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" /> -->
@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/demo/hzhstyle.css" />
 		<script type="text/javascript" src="/js/ext/jweixin-1.0.0.js"></script>
 		<script type="text/javascript" src="/js/ext/shareJs.js"></script>
-		<script type="text/javascript" src="/js/ext/angular.js"></script>
+		<script type="text/javascript" src="/js/ext/angular.js"></script> 
 		<script type="text/javascript" src="/js/ext/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="/js/demo/productInfo.js"></script>
 	    <style type="text/css">
@@ -19,7 +19,7 @@
 	    </style>
 	</head>
 	<body style="background:#ffffff;">
-		<div id="loveCard" ng-controller="productInfoController">
+		<div id="loveCard" ng-app="weChat" ng-controller="productInfoController">
 			<!--banner-->
 			<div class="banner"><img src="/images/banner_bg.png" /></div>
 			<div class="name_t">
